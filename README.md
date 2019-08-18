@@ -19,7 +19,7 @@ ability to use the familiar Arduino IDE, this board is a great way to jump into 
  
  - The program will ask you if you want to start a reverse tcp stager. Press y and then enter to start one.
  
- - Plug the malcious DigiSpark to victim's PC and BOOM! You've a shell!
+ - Plug the malcious DigiSpark to victim's PC and **BOOM! You've a shell!**
  
  # About me
  I'm a 17 year old kid born and raised Oman an country in the middle east. Growing up i was pretty much intrested to code and 
