@@ -23,7 +23,7 @@ ability to use the familiar Arduino IDE, this board is a great way to jump into 
  
  # About me
  I'm a 17 year old kid born and raised Oman an country in the middle east. Growing up i was pretty much intrested to code and 
- fell in love with it. During my 8th grade I was introduced to Kali Linux a OS that changed my view of life. 
+ fell in love with it. During my 8th grade I was introduced to Kali Linux a OS that changed my view of life. Write now I'm     doing my class 12 at Kerela, India. I did CEH which was pretty much amazing. 
  Follow me on Instagram
  
  [https://www.instagram.com/zero.overflow](https://www.instagram.com/zero.overflow)
