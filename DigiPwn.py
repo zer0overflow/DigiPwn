@@ -167,6 +167,7 @@ void loop() {
                 os.system('msfconsole -r msf.rc')
 		while 1:
 			try:
+				time.sleep(999 * 999)
 				pass
 			except KeyboardInterrupt:
 				print(info  + ' Quitting...')
