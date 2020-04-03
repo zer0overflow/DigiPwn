@@ -1,3 +1,4 @@
+# ![Image of DigiPwn Logo](https://i.imgur.com/mDVQ4Jw.png)
 # DigiPwn
 Digispark KickStarter ATtiny85 USB Development Board The ATtiny85 based mini development board is similar to the Arduino, 
 but cheaper and smaller (of course a bit less powerful). With a whole host of shields to extend its functionality and the 
