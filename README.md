@@ -9,6 +9,7 @@ ability to use the familiar Arduino IDE, this board is a great way to jump into 
  - [Arduino](https://www.arduino.cc/en/Main/Software)
  - Setup DigiSpark board in Arduino. [Click here for how-to.](https://digistump.com/wiki/digispark/tutorials/connecting).
  - Requires module [impacket](https://github.com/SecureAuthCorp/impacket).
+
 # Installation 
  - First clone the repo
   `git clone https://github.com/zer0overflow/DigiPwn.git`
